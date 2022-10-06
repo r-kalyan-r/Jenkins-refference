@@ -1,5 +1,11 @@
 ## Found two ways to convert string to intiger 
 ## first way to add .toIntiger() at end of string
+## note: any where in code to define variable you do need to specify "def" as shownin in line 18 and 19 by default it considers as intiger , to 
+##       differentiate as String put it in double quotes like this ,
+## a = "apple"
+## b = "ball"
+## c = 1 ----> if intiger no quote
+ 
 
 pipeline {
     agent any
