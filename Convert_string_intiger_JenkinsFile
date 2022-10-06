@@ -1,0 +1,50 @@
+## Found two ways to convert string to intiger 
+## first way to add .toIntiger() at end of string
+
+pipeline {
+    agent any
+
+    parameters {
+        choice choices: ['1', '2', '3', '4', '5'], description: '', name: 'choiceParameter'
+		choice choices: ['1', '2', '3', '4', '5'], description: '', name: 'choiceParameter2'
+		
+    }
+
+    stages {
+        stage("stage1") {
+            steps {
+                script {
+                    a = params.choiceParameter.toInteger()
+					b = params.choiceParameter2.toInteger()
+					total = a+b
+					echo "total is ${total}"
+                }
+            }
+        }
+    }
+}
+
+###################Second Way to add def int while defining
+
+pipeline {
+    agent any
+
+    parameters {
+        choice choices: ['1', '2', '3', '4', '5'], description: '', name: 'choiceParameter'
+		choice choices: ['1', '2', '3', '4', '5'], description: '', name: 'choiceParameter2'
+		
+    }
+
+    stages {
+        stage("stage1") {
+            steps {
+                script {
+                    def int a = params.choiceParameter
+					def int b = params.choiceParameter2
+					total = a+b
+					echo "total is ${total}"
+                }
+            }
+        }
+    }
+}
