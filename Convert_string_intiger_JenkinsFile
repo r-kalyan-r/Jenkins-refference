@@ -6,7 +6,7 @@ pipeline {
 
     parameters {
         choice choices: ['1', '2', '3', '4', '5'], description: '', name: 'choiceParameter'
-		choice choices: ['1', '2', '3', '4', '5'], description: '', name: 'choiceParameter2'
+	choice choices: ['1', '2', '3', '4', '5'], description: '', name: 'choiceParameter2'
 		
     }
 
@@ -15,9 +15,9 @@ pipeline {
             steps {
                 script {
                     a = params.choiceParameter.toInteger()
-					b = params.choiceParameter2.toInteger()
-					total = a+b
-					echo "total is ${total}"
+		    b = params.choiceParameter2.toInteger()
+		    total = a+b
+	            echo "total is ${total}"
                 }
             }
         }
@@ -40,9 +40,9 @@ pipeline {
             steps {
                 script {
                     def int a = params.choiceParameter
-					def int b = params.choiceParameter2
-					total = a+b
-					echo "total is ${total}"
+		    def int b = params.choiceParameter2
+		    total = a+b
+		    echo "total is ${total}"
                 }
             }
         }
