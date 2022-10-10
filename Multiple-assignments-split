@@ -1,0 +1,32 @@
+## This pipeline showcase to assign multiple assignments using split function if the definaition is multiple words 
+
+
+pipeline {
+    agent any
+	environment {
+       registry = "hub docker tag"
+       }
+
+
+    stages {
+        stage("stage1") {
+            steps {
+                script {
+				   def x = new java.util.Date()
+           def (week, month, date, time, standard, year) = "${x}".split()
+				   println week
+				   println month
+				   println date
+				   println time
+				   println standard
+				   println year
+           def (registry, repo, tag) = "${registry}".split()
+           assert "$registry $repo $tag" == 'hub docker tag'
+				   println registry
+				   println repo
+				   println tag
+                }
+            }
+        }
+    }
+}
