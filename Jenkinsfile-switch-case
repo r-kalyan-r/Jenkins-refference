@@ -1,0 +1,58 @@
+// Switch case with choice parameter 
+pipeline {
+   agent any  
+   parameters { choice(name: 'DOCKER_REGISTRY', choices: ['PROD', 'QA', 'DEV', 'STAGE', ], description: 'SELECT THE DOCKER REGISTRY ') }
+   stages {
+
+      stage('Select docker registry') {
+
+         steps {
+              script {
+                 def result = ""
+
+switch (DOCKER_REGISTRY) {
+    case "DEV":
+        result = "DEV"
+		sh """
+		 ./dev.sh
+		 # running dev environment related shell script 
+		"""
+		break
+
+    case "PROD":
+        result = "PROD"
+		sh """
+		 ./prod.sh
+		 # running prod environment related shell script
+		"""
+		break
+
+    case "STAGE":
+        result = "STAGE"
+		sh """
+		 ./stage.sh
+		 # running stage environment related shell script 
+		"""
+        break
+
+    case "QA":
+        result = "QA"
+		sh """
+		./qa.sh
+		 # running qa environment related shell script 
+		"""
+        break
+
+    default:
+        result = "DEV"
+}
+        println result
+
+
+              }
+         }
+      }
+
+   }
+}
+
