@@ -1,5 +1,5 @@
 ## This jenkins pipeline gives you list of choice to select and based on user selection it will return refferend choice 
-##
+## https://medium.com/@kalyanraparthi3262/how-to-use-jenkins-active-choice-parameter-in-declarative-pipeline-528270eecd9a
 
 
 properties([
