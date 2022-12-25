@@ -1,0 +1,35 @@
+pipeline {
+    agent any
+    stages {
+        stage("Checkout"){
+        steps {
+            checkout scm: [$class: 'GitSCM', userRemoteConfigs: [[url: 'https://github.com/r-kalyan-r/Jenkins-refference.git',credentialsId: 'git-token']], branches: [[name: 'main']]], poll: false
+          }
+        }
+        stage("Stage1") {
+            when {
+                changelog ".*QA.*"
+            }
+            steps {
+                echo "Hello from Stage 1 QA"
+            }
+        }
+        stage("Stage2"){
+            when {
+                changelog ".*PROD.*"
+                    
+            }
+            steps {
+                 echo "Hello From Stage 2"
+            }          
+        }
+        stage("Stage3"){
+            when {
+                changelog ".*DEV.*"
+            }
+            steps {
+               echo "Hello From Stage 3"
+            }
+        }
+    }
+}
